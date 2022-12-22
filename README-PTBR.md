@@ -7,6 +7,7 @@ Após algumas pesquisas mais afundo, descobri que a estrutura do arquivo zip tem
 - [Conteúdo](#content)
 - [Processo e Fluxograma](#process)
 - [Requisitos para implementação](#requirements)
+- [O que usaremos](#what-we-will-use)
 
 ## Processo
 
@@ -80,3 +81,7 @@ Configure a função do Lambda para que ela seja acionada sempre que um arquivo 
 1. Clique no botão **Adicionar acionador** na seção **Visão geral** da função e selecione um evento S3 no menu suspenso.
 2. Em seguida, escolha seu balde e selecione 'PUT' como o tipo de evento e também não se esqueça de adicionar '.zip' no campo de sufixo ou ele invocará automaticamente a função em um loop.
 3. Em seguida, clique em **Adicionar** para adicionar o gatilho na função lambda.
+
+## O que usaremos
+
+Usaremos o [AWS SDK](https://www.npmjs.com/package/aws-sdk) para obter o arquivo do bucket S3. Dentro do objeto `event` da função `handler`, temos o array `Records` que contém o nome do Bucket S3 e a chave do objeto que acionou esta função lambda. Usaremos o array `Records` para obter o Bucket e a chave para o método `S3.getObject(params, [callback])` para buscar o arquivo zip.

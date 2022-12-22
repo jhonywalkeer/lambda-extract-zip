@@ -7,6 +7,7 @@ After some more research I found that the zip file structure has its core direct
 - [Contents](#content)
 - [Process and Flowchart](#process)
 - [Requirements for implementation](#requirements)
+- [What we will use](#what-we-will-use)
 
 ## Process
 
@@ -80,3 +81,7 @@ Configure the Lambda function such that it'll be triggered whenever a zip file i
 1. Click on the **Add trigger** button on the Function overview section and select an S3 event from the dropdown.
 2. Then choose your bucket and select 'PUT' as the event type and also don't forget to add '.zip' in the suffix field or it'll self invoke the function in a loop.
 3. Then click on **Add** to add the trigger on the lambda function.
+
+## What we will use
+
+We'll use the [AWS SDK](https://www.npmjs.com/package/aws-sdk) to get the file from the S3 bucket. Inside the `event` object of the `handler` function, we have the `Records` array that contains the name of the S3 Bucket and the key of the object that triggered this lambda function. We'll use the `Records` array to get the Bucket and the key to the `S3.getObject(params, [callback])` method to fetch the zip file.
