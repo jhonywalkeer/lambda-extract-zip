@@ -2,6 +2,12 @@ Sabemos que em algum momento surgirá a necessidade de fazer upload de vários a
 
 Após algumas pesquisas mais afundo, descobri que a estrutura do arquivo zip tem seu diretório central localizado no final do arquivo e existem cabeçalhos locais que são uma cópia do diretório central, mas não são confiáveis. E os métodos de leitura da maioria das outras bibliotecas de streaming armazenam em buffer todo o arquivo zip na memória, anulando todo o propósito de transmiti-lo em primeiro lugar. Então, aqui está um algoritmo criado usando a biblioteca yauzl (biblioteca de descompactação para Node.js)
 
+### Conteúdo
+
+- [Conteúdo](#content)
+- [Processo e Fluxograma](#process)
+- [Requisitos para implementação](#requirements)
+
 ## Processo
 
 - [ ] O usuário carrega muitos arquivos por meio da aplicação.

@@ -2,6 +2,12 @@ We know that at some point there will be a need to upload multiple client-side f
 
 After some more research I found that the zip file structure has its core directory located at the end of the file and there are local headers which are a copy of the core directory but are not reliable. And the read methods of most other streaming libraries buffer the entire zip file in memory, defeating the whole purpose of streaming it in the first place. So here is an algorithm created using yauzl library (unzip library for Node.js)
 
+### Conteúdo
+
+- [Contents](#content)
+- [Process and Flowchart](#process)
+- [Requirements for implementation](#requirements)
+
 ## Process
 
 - [ ] The user uploads many files through the application.
