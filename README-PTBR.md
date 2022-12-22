@@ -60,3 +60,23 @@ Pronto, agora inicie o processo de criação da função Lambda pelo console da 
 - **Use um projeto (Use a blueprint)** - Os esquemas de código da AWS incluem integrações integradas da AWS com outros serviços e usos comuns. Esses esquemas podem economizar uma quantidade significativa de tempo ao desenvolver funções do Lambda.
 - **Imagem do contêiner (Container image)** - As imagens de contêiner armazenadas no Amazon Elastic Container Registry também são úteis para iniciar novas funções do Lambda.
 - **Navegue pelo repositório de aplicativos sem servidor (Browse serveless app repository)** No AWS Serverless Application Repository, os usuários podem encontrar vários produtos úteis.
+
+Os campos de configuração básica incluem nome da função, tempo de execução e permissões. Os tempos de execução suportados incluem linguagens de programação como Node.js, Go, Python, Ruby, Java, C# e .NET. O Lambda também oferece suporte a tempos de execução personalizados, que um desenvolvedor pode implementar em qualquer linguagem que possa ser compilada no Amazon Linux OS. Esteja ciente de que a AWS adiciona novos tempos de execução e versões a [essa lista](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) continuamente.
+
+<h1 align="center">
+    <img width="100%"  alt="" title="" src="./assets/screenshots/basic-information.png" />
+</h1>
+
+A seção **Configurações avançadas** exibe configurações como assinatura de código e VPC. A assinatura de código adiciona uma camada extra de segurança ao código Lambda. Isso garante que esse código não tenha sido alterado desde um determinado ponto no tempo. Um exemplo são as instâncias do Amazon Relational Database Service com acesso público desabilitado.
+
+As configurações de VPC permitem que desenvolvedores sem servidor implantem funções do Lambda em uma VPC com acesso a recursos privados. Outro exemplo são os clusters do Amazon ElastiCache acessíveis apenas por meio de tabelas VPC e DynamoDB com VPC endpoints ativados.
+
+<h1 align="center">
+    <img width="100%"  alt="" title="" src="./assets/screenshots/advanced-settings.jpg" />
+</h1>
+
+Configure a função do Lambda para que ela seja acionada sempre que um arquivo .zip for carregado no bucket do S3. Para isso:
+
+1. Clique no botão **Adicionar acionador** na seção **Visão geral** da função e selecione um evento S3 no menu suspenso.
+2. Em seguida, escolha seu balde e selecione 'PUT' como o tipo de evento e também não se esqueça de adicionar '.zip' no campo de sufixo ou ele invocará automaticamente a função em um loop.
+3. Em seguida, clique em **Adicionar** para adicionar o gatilho na função lambda.
