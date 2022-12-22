@@ -1,0 +1,27 @@
+{
+  "name": "lambda-extract-zip",
+  "version": "1.0.0",
+  "description": "We know that at some point there will be a need to upload multiple client-side files through your application. In a quick search we found similar questions on StackOverflow on how to carry out this process, however, because it is AWS the most accepted answers are through an implementation using the AWS CLI, when a process is found using Javascript it is using `promise.all ` but it's certainly not a client-side option. We will also find some implementations using Python and boto3, but for an application that was written in Node.js how do we do it? Surely there is a better and faster approach than turning this Node.js script into Python....",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "zip": "zip -r9 lambda"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonywalkeer/lambda-extract-zip.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonywalkeer/lambda-extract-zip/issues"
+  },
+  "homepage": "https://github.com/jhonywalkeer/lambda-extract-zip#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1280.0",
+    "uuid": "^9.0.0",
+    "yauzl": "^2.10.0"
+  }
+}
