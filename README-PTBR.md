@@ -19,7 +19,7 @@ Após algumas pesquisas mais afundo, descobri que a estrutura do arquivo zip tem
 - [ ] Quando o upload termina, ele segue para a próxima entrada e repete o processo.
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/flow/unzip-files-trigger.png" />
+    <img width="100%"  alt="Fluxo da estrutura de execução da Lambda" title="Fluxo da estrutura de execução da Lambda" src="./assets/flow/unzip-files-trigger.png" />
 </h1>
 
 **⚠️ Este algoritmo NÃO atinge o limite de RAM da função Lambda. Durante os testes o uso máximo de memória foi inferior a 500 MB para extrair um arquivo zip de 254 MB contendo 2,24 GB de arquivos.**
@@ -65,7 +65,7 @@ Pronto, agora inicie o processo de criação da função Lambda pelo console da 
 Os campos de configuração básica incluem nome da função, tempo de execução e permissões. Os tempos de execução suportados incluem linguagens de programação como Node.js, Go, Python, Ruby, Java, C# e .NET. O Lambda também oferece suporte a tempos de execução personalizados, que um desenvolvedor pode implementar em qualquer linguagem que possa ser compilada no Amazon Linux OS. Esteja ciente de que a AWS adiciona novos tempos de execução e versões a [essa lista](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) continuamente.
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/screenshots/basic-information.png" />
+    <img width="100%"  alt="Configuração básica da Lambda incluindo nome e definido runtime" title="Screenshot de configuração inicial na Lambda" src="./assets/screenshots/basic-information.png" />
 </h1>
 
 A seção **Configurações avançadas** exibe configurações como assinatura de código e VPC. A assinatura de código adiciona uma camada extra de segurança ao código Lambda. Isso garante que esse código não tenha sido alterado desde um determinado ponto no tempo. Um exemplo são as instâncias do Amazon Relational Database Service com acesso público desabilitado.
@@ -73,7 +73,7 @@ A seção **Configurações avançadas** exibe configurações como assinatura d
 As configurações de VPC permitem que desenvolvedores sem servidor implantem funções do Lambda em uma VPC com acesso a recursos privados. Outro exemplo são os clusters do Amazon ElastiCache acessíveis apenas por meio de tabelas VPC e DynamoDB com VPC endpoints ativados.
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/screenshots/advanced-settings.jpg" />
+    <img width="100%"  alt="Configuração avançada da Lambda" title="Screenshot de configuração avançada na Lambda" src="./assets/screenshots/advanced-settings.jpg" />
 </h1>
 
 Configure a função do Lambda para que ela seja acionada sempre que um arquivo .zip for carregado no bucket do S3. Para isso:
@@ -82,6 +82,14 @@ Configure a função do Lambda para que ela seja acionada sempre que um arquivo 
 2. Em seguida, escolha seu balde e selecione 'PUT' como o tipo de evento e também não se esqueça de adicionar '.zip' no campo de sufixo ou ele invocará automaticamente a função em um loop.
 3. Em seguida, clique em **Adicionar** para adicionar o gatilho na função lambda.
 
+<h1 align="center">
+    <img width="100%"  alt="Modificando trigger para utilizar com o Bucket S3" title="Screenshot de configuração da trigger" src="./assets/screenshots/add-trigger.png" />
+</h1>
+
 ## O que usaremos
 
 Usaremos o [AWS SDK](https://www.npmjs.com/package/aws-sdk) para obter o arquivo do bucket S3. Dentro do objeto `event` da função `handler`, temos o array `Records` que contém o nome do Bucket S3 e a chave do objeto que acionou esta função lambda. Usaremos o array `Records` para obter o Bucket e a chave para o método `S3.getObject(params, [callback])` para buscar o arquivo zip.
+
+## Licença
+
+A licença MIT, também chamada de licença X ou licença X11, é uma licença de programa de computador criada pelo Massachusetts Institute of Technology. É uma licença permissiva usada tanto em software livre quanto em software proprietário.

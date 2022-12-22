@@ -19,7 +19,7 @@ After some more research I found that the zip file structure has its core direct
 - [ ] When the upload is complete, it moves on to the next entry and repeats the process.
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/flow/unzip-files-trigger.png" />
+    <img width="100%"  alt="Lambda Execution Framework Flow" title="Lambda Execution Framework Flow" src="./assets/flow/unzip-files-trigger.png" />
 </h1>
 
 **⚠️ This algorithm does NOT hit the Lambda function RAM limit. During testing the maximum memory usage was less than 500MB to extract a 254MB zip file containing 2.24GB of files.**
@@ -65,7 +65,7 @@ That's it, now start the process of creating the Lambda function through the AWS
 Basic configuration fields include role name, runtime, and permissions. Supported runtimes include programming languages such as Node.js, Go, Python, Ruby, Java, C# and .NET. Lambda also supports custom runtimes, which a developer can implement in any language that can be compiled on Amazon Linux OS. Please be aware that AWS adds new runtimes and versions to [this list](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html) on an ongoing basis
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/screenshots/basic-information.png" />
+    <img width="100%"  alt="Basic Lambda configuration including name and runtime defined" title="Screenshot of initial configuration in Lambda" src="./assets/screenshots/basic-information.png" />
 </h1>
 
 The **Advanced Settings** section displays settings such as Code Signing and VPC. Code signing adds an extra layer of security to Lambda code. This ensures that this code hasn't changed since a certain point in time. An example is Amazon Relational Database Service instances with public access disabled.
@@ -73,7 +73,7 @@ The **Advanced Settings** section displays settings such as Code Signing and VPC
 VPC configurations allow serverless developers to deploy Lambda functions in a VPC with access to private resources. Another example is Amazon ElastiCache clusters accessible only through VPC and DynamoDB tables with VPC endpoints enabled.
 
 <h1 align="center">
-    <img width="100%"  alt="" title="" src="./assets/screenshots/advanced-settings.jpg" />
+    <img width="100%"  alt="Lambda advanced configuration" title="Advanced configuration screenshot in Lambda" src="./assets/screenshots/advanced-settings.jpg" />
 </h1>
 
 Configure the Lambda function such that it'll be triggered whenever a zip file is uploaded to the S3 bucket.
@@ -82,6 +82,14 @@ Configure the Lambda function such that it'll be triggered whenever a zip file i
 2. Then choose your bucket and select 'PUT' as the event type and also don't forget to add '.zip' in the suffix field or it'll self invoke the function in a loop.
 3. Then click on **Add** to add the trigger on the lambda function.
 
+<h1 align="center">
+    <img width="100%"  alt="Modifying trigger for use with Bucket S3" title="Trigger configuration screenshot" src="./assets/screenshots/add-trigger.png" />
+</h1>
+
 ## What we will use
 
 We'll use the [AWS SDK](https://www.npmjs.com/package/aws-sdk) to get the file from the S3 bucket. Inside the `event` object of the `handler` function, we have the `Records` array that contains the name of the S3 Bucket and the key of the object that triggered this lambda function. We'll use the `Records` array to get the Bucket and the key to the `S3.getObject(params, [callback])` method to fetch the zip file.
+
+## License
+
+The MIT license, also called the X license or the X11 license, is a computer program license created by the Massachusetts Institute of Technology. It is a permissive license used in both free software and proprietary software.
